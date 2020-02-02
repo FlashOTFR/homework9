@@ -33,19 +33,19 @@ function generateHTML(answers) {
         <title>Document</title>
     </head>
     <body>
-        <img src='${avatar_url}'>
+        <img src='${answers.avatar_url}'>
         <br>
-        <p>${login}</p>
+        <p>${answers.login}</p>
         <br>
-        <a href=${location}>Location</a>
-        <a href=${url}>Github link</a>
-        <a href=${blog}>User blog</a>
+        <a href=${answers.location}>Location</a>
+        <a href=${answers.url}>Github link</a>
+        <a href=${answers.blog}>User blog</a>
         <br>
-        <p>${bio}</p>
+        <p>${answers.bio}</p>
         <br>
-        <p>${public_repos}</p>
+        <p>${answers.public_repos}</p>
         <br>
-        <p>${followers}</p>
+        <p>${answers.followers}</p>
         <br>
         <p>number of github stars</p>
     </body>
@@ -58,6 +58,6 @@ promptUser().then(({username}) => {
 
     axios.get(queryUrl).then(answers => {
         const html = generateHTML(answers);
-
+        console.log(answers);
         return writeFileAsync('index.html', html);
-      })
+      })})
